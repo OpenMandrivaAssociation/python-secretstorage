@@ -50,12 +50,6 @@ rm -rf html/.{doctrees,buildinfo}
 %install
 %py_install
 
-%check
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-for MOCK in libsecret-0.18.6/libsecret/mock-service-{normal,only-plain,lock}.py; do
-  xvfb-run -a dbus-launch --exit-with-session %{__python3} tests/run_tests.py ${MOCK}
-done
-	
 %files
 %license LICENSE
 %doc README.rst html
