@@ -54,4 +54,4 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 %doc README.rst html
 %{python_sitelib}/secretstorage
-%{python_sitelib}/SecretStorage-%{version}-py?.?.egg-info
+%{python_sitelib}/SecretStorage-%{version}-py*.*.egg-info
