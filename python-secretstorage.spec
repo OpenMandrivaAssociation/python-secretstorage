@@ -4,7 +4,7 @@
 
 Name:           python-%{pkg_name}
 Version:        3.3.1
-Release:        2
+Release:        3
 Summary:        Python bindings to FreeDesktop.org Secret Service API
 Group:          Development/Python
 License:        BSD 3-Clause License
