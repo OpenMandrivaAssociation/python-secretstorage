@@ -16,17 +16,18 @@ BuildArch:      noarch
 BuildRequires:	dbus-x11
 BuildRequires:	x11-server-xvfb
 BuildRequires:  python3-devel
-BuildRequires:  python3dist(cryptography)
-BuildRequires:	python3dist(dbus-python)
-BuildRequires:	python3dist(pygobject)
-BuildRequires:  python3dist(jeepney)
-BuildRequires:  python3dist(setuptools)
-BuildRequires:  python3dist(sphinx)
+BuildRequires:  python%{pyver}dist(pip)
+BuildRequires:  python%{pyver}dist(cryptography)
+BuildRequires:	python%{pyver}dist(dbus-python)
+BuildRequires:	python%{pyver}dist(pygobject)
+BuildRequires:  python%{pyver}dist(jeepney)
+BuildRequires:  python%{pyver}dist(setuptools)
+BuildRequires:  python%{pyver}dist(sphinx)
 
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
-Requires:       python3dist(cryptography)
-Requires:       python3dist(jeepney)
+Requires:       python%{pyver}dist(cryptography)
+Requires:       python%{pyver}dist(jeepney)
 
 %description
 This module provides a way for securely storing passwords and other secrets.
