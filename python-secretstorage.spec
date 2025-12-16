@@ -1,21 +1,18 @@
-# Created by pyp2rpm-3.3.2
-%global pypi_name SecretStorage
 %global pkg_name secretstorage
 
 Name:           python-%{pkg_name}
-Version:        3.3.1
-Release:        4
+Version:        3.5.0
+Release:        1
 Summary:        Python bindings to FreeDesktop.org Secret Service API
 Group:          Development/Python
 License:        BSD 3-Clause License
 URL:            https://pypi.org/project/SecretStorage
-Source0:        https://files.pythonhosted.org/packages/cd/08/758aeb98db87547484728ea08b0292721f1b05ff9005f59b040d6203c009/SecretStorage-%{version}.tar.gz
-Source1:	http://download.gnome.org/sources/libsecret/0.18/libsecret-0.18.6.tar.xz
+Source0:        https://files.pythonhosted.org/packages/source/s/secretstorage/secretstorage-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:	dbus-x11
 BuildRequires:	x11-server-xvfb
-BuildRequires:  python3-devel
+BuildSystem:	python
 BuildRequires:  python%{pyver}dist(pip)
 BuildRequires:  python%{pyver}dist(cryptography)
 BuildRequires:	python%{pyver}dist(dbus-python)
@@ -24,8 +21,6 @@ BuildRequires:  python%{pyver}dist(jeepney)
 BuildRequires:  python%{pyver}dist(setuptools)
 BuildRequires:  python%{pyver}dist(sphinx)
 
-%{?python_provide:%python_provide python3-%{pypi_name}}
-
 Requires:       python%{pyver}dist(cryptography)
 Requires:       python%{pyver}dist(jeepney)
 
@@ -33,26 +28,13 @@ Requires:       python%{pyver}dist(jeepney)
 This module provides a way for securely storing passwords and other secrets.
 It uses D-Bus Secret Service API that is supported by GNOME Keyring.
 
-%prep
-%autosetup -n SecretStorage-%{version}
-tar xf %{SOURCE1}
-
-# Remove bundled egg-info
-rm -rf *.egg-info
-
-%build
-%py_build
-
+%build -a
 # generate html docs
 PYTHONPATH=${PWD} sphinx-build docs html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
-%install
-%py_install
-
 %files
-%license LICENSE
-%doc README.rst html
+%doc html
 %{python_sitelib}/secretstorage
-%{python_sitelib}/SecretStorage-%{version}-py*.*.egg-info
+%{python_sitelib}/secretstorage-%{version}.dist-info
