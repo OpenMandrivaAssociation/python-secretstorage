@@ -2,7 +2,7 @@
 
 Name:           python-%{pkg_name}
 Version:        3.5.0
-Release:        2
+Release:        3
 Summary:        Python bindings to FreeDesktop.org Secret Service API
 Group:          Development/Python
 License:        BSD 3-Clause License
@@ -20,7 +20,9 @@ BuildRequires:	python%{pyver}dist(pygobject)
 BuildRequires:	python%{pyver}dist(sphinx)
 %endif
 BuildSystem:	python
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python%{pyver}dist(pip)
+BuildRequires:  python%{pyver}dist(wheel)
 BuildRequires:  python%{pyver}dist(cryptography)
 BuildRequires:  python%{pyver}dist(jeepney)
 BuildRequires:  python%{pyver}dist(setuptools)
